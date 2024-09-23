@@ -18,6 +18,7 @@ public class MainGUI {
     private JTextField resultField;
     private JComboBox<String> disciplineBox;
     private JTextArea outputArea;
+    private JLabel resultLabel;
 
     public static void main(String[] args) {
         new MainGUI().createAndShowGUI();
@@ -47,7 +48,8 @@ public class MainGUI {
 
         // Input for result
         resultField = new JTextField(10);
-        panel.add(new JLabel("Enter Result:"));
+        resultLabel = new JLabel("Enter Result:");
+        panel.add(resultLabel);
         panel.add(resultField);
 
         // Button to calculate and display result
@@ -63,6 +65,19 @@ public class MainGUI {
 
         frame.add(panel);
         frame.setVisible(true);
+
+        disciplineBox.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                if(disciplineBox.getSelectedItem() == "1500m")
+                    resultLabel.setText("Enter Result: (Minutes e.g. 4.1)");
+                else {
+                    if (!resultLabel.getText().equals("Enter Result:")) resultLabel.setText("Enter Result:");
+                }
+            }
+        });
     }
 
     private class CalculateButtonListener implements ActionListener {

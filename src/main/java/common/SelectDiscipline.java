@@ -131,7 +131,7 @@ public class SelectDiscipline {
 		System.out.println("1. Decathlon 100 meters. (Measured in seconds)");
 		System.out.println("2. Decathlon 400 meters. (Measured in seconds)");
 		System.out.println("3. Decathlon 110 meters hurdles. (Measured in seconds)");
-		System.out.println("4. Decathlon 1500 meters. (Measured in minutes and seconds)");
+		System.out.println("4. Decathlon 1500 meters. (Measured in minutes e.g. 4.1 minutes)");
 		System.out.println("5. Decathlon Long Jump. (Measured in centimeters)");
 		System.out.println("6. Decathlon High Jump. (Measured in centimeters)");
 		System.out.println("7. Decathlon Pole Vault. (Measured in centimeters)");
