@@ -21,7 +21,7 @@ public class Deca100M {
 				// Acceptable values.
 				if (runningTime < 5) {
 					System.out.println("Value too low");
-					runningTime = inputResult.enterResult();
+					runningTime = inputResult.enterResult(); //remove later
 				} else if (runningTime > 17.8) {
 					System.out.println("Value too high");
 					runningTime = inputResult.enterResult();
