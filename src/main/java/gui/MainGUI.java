@@ -13,7 +13,6 @@ import decathlon.*;
 
 
 public class MainGUI {
-
     private JTextField nameField;
     private JTextField resultField;
     private JComboBox<String> disciplineBox;
@@ -140,6 +139,10 @@ public class MainGUI {
                 outputArea.append("Score: " + score + "\n\n");
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null, "Please enter a valid number for the result.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+            }
+            catch (Exception ex)
+            {
+                System.out.println("ERROR");
             }
         }
     }
