@@ -8,8 +8,12 @@ import java.awt.event.ActionListener;
 
 
 import java.awt.*;
+import java.io.IOException;
+import java.util.ArrayList;
 
+import common.Competitor;
 import decathlon.*;
+import excel.ExcelPrinter;
 import heptathlon.*;
 
 
@@ -24,6 +28,7 @@ public class MainGUI {
     private JRadioButton radioButtonHepta;
     private String eventToCalculate = "Decathlon";
 
+    private ArrayList<Competitor> competitors = new ArrayList<>();
     String[] disciplines = {
             "100m", "400m", "1500m", "110m Hurdles",
             "Long Jump", "High Jump", "Pole Vault",
@@ -39,7 +44,7 @@ public class MainGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 800);
 
-        JPanel panel = new JPanel(new GridLayout(6, 1));
+        JPanel panel = new JPanel(new GridLayout(7, 1)); // Updated from 6 to 7 rows
 
         // Radio buttons
         radioButtonDeca = new JRadioButton();
@@ -78,6 +83,11 @@ public class MainGUI {
         JButton calculateButton = new JButton("Calculate Score");
         calculateButton.addActionListener(new CalculateButtonListener());
         panel.add(calculateButton);
+
+        // Added: Button to export results to Excel
+        JButton exportButton = new JButton("Export to Excel");
+        exportButton.addActionListener(new ExportButtonListener());  // New export button listener
+        panel.add(exportButton);  // Add export button to the panel
 
         // Output area
         outputArea = new JTextArea(5, 40);
@@ -225,4 +235,35 @@ public class MainGUI {
             }
         }
     }
+
+    private class ExportButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                exportToExcel();
+                JOptionPane.showMessageDialog(null, "Results exported successfully!", "Export Successful", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Failed to export results to Excel.", "Export Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void exportToExcel() throws IOException {
+        String[][] data = new String[competitors.size()][];
+        int i = 0;
+        for (Competitor competitor : competitors) {
+            data[i] = new String[18];  // Adjust this for 17 events + name + total
+            Object[] rowData = competitor.getRowData();
+            for (int j = 0; j < rowData.length; j++) {
+                data[i][j] = rowData[j].toString();
+            }
+            i++;
+        }
+
+        ExcelPrinter printer = new ExcelPrinter("TrackAndFieldResults");
+        printer.add(data, "Results");
+        printer.write();
+    }
+
+
 }
