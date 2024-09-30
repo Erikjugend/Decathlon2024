@@ -21,14 +21,10 @@ public class Deca400M {
 		while (active) {
 
 			try {
-				// Acceptable values.
-				if (runningTime < minBoundaryValue) {
-					System.out.println("Value too low");
-					runningTime = inputResult.enterResult();
-				} else if (runningTime > maxBoundaryValue) {
+				if (runningTime > minBoundaryValue) {
 					score = -1;
 					//runningTime = inputResult.enterResult();
-				} else if (runningTime > 100) {
+				} else if (runningTime > maxBoundaryValue) {
 					System.out.println("Value too high");
 					score = -2;
 					//runningTime = inputResult.enterResult();
@@ -43,6 +39,12 @@ public class Deca400M {
 		}
 		System.out.println("The result is: " + score);
 		return score;
+	}
+	public double getMinBoundaryValue() {
+		return minBoundaryValue;
+	}
+	public double getMaxBoundaryValue() {
+		return maxBoundaryValue;
 	}
 
 }

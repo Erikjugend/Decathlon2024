@@ -22,13 +22,10 @@ public class Deca1500M {
 
 			try {
 				// Acceptable values.
-				if (runningTime < minBoundaryValue) { //These are boundary values in minutes
-					System.out.println("Value too low");
-					runningTime = inputResult.enterResult();
-				} else if (runningTime > maxBoundaryValue) { //These are boundary values in minutes
+				if (runningTime > minBoundaryValue) { //These are boundary values in minutes
 					score = -1;
 					//runningTime = inputResult.enterResult();
-				} else if (runningTime > 7) { //These are boundary values in minutes
+				} else if (runningTime > maxBoundaryValue) { //These are boundary values in minutes
 					System.out.println("Value too high");
 					score = -2;
 					//runningTime = inputResult.enterResult();
@@ -43,6 +40,12 @@ public class Deca1500M {
 		}
 		System.out.println("The result is: " + score);
 		return score;
+	}
+	public double getMinBoundaryValue() {
+		return minBoundaryValue;
+	}
+	public double getMaxBoundaryValue() {
+		return maxBoundaryValue;
 	}
 
 }

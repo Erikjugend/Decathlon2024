@@ -22,11 +22,11 @@ public class Hep100MHurdles {
 
 			try {
 				// Acceptable values.
-				if (runningTime < 5) {
+				if (runningTime < minBoundaryValue) {
 					System.out.println("Value too low");
 					score = -1;
 					//runningTime = inputResult.enterResult();
-				} else if (runningTime > 26.4) {
+				} else if (runningTime > maxBoundaryValue) {
 					System.out.println("Value too high");
 					score = -2;
 					//runningTime = inputResult.enterResult();
@@ -42,6 +42,12 @@ public class Hep100MHurdles {
 		}
 		System.out.println("The result is " + score);
 		return score;
+	}
+	public double getMinBoundaryValue() {
+		return minBoundaryValue;
+	}
+	public double getMaxBoundaryValue() {
+		return maxBoundaryValue;
 	}
 
 }

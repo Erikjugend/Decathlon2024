@@ -23,13 +23,11 @@ public class Deca100M {
 
 			try {
 				// Acceptable values.
-				if (runningTime < minBoundaryValue) {
-					System.out.println("Value too low");
-					runningTime = inputResult.enterResult(); //remove later
-				} else if (runningTime > maxBoundaryValue) {
+				if (runningTime > minBoundaryValue) {
 					score = -1;
+					System.out.println("Value too low");
 					//runningTime = inputResult.enterResult(); //remove later
-				} else if (runningTime > 17.8) {
+				} else if (runningTime > maxBoundaryValue) {
 					System.out.println("Value too high");
 					//runningTime = inputResult.enterResult();
 					score = -2;

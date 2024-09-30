@@ -21,11 +21,11 @@ public class Hep800M {
 
 			try {
 				// Acceptable values.
-				if (runningTime < 70) {
+				if (runningTime < minBoundaryValue) {
 					System.out.println("Value too low");
 					score = -1;
 					//runningTime = inputResult.enterResult();
-				} else if (runningTime > 250.79) {
+				} else if (runningTime > maxBoundaryValue) {
 					// competitor gets 1 point in 250.79 sec
 					System.out.println("Value too high");
 					score = -2;
@@ -41,6 +41,12 @@ public class Hep800M {
 		}
 		System.out.println("The result is " + score);
 		return score;
+	}
+	public double getMinBoundaryValue() {
+		return minBoundaryValue;
+	}
+	public double getMaxBoundaryValue() {
+		return maxBoundaryValue;
 	}
 
 }

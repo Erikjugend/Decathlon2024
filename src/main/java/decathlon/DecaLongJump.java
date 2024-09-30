@@ -21,11 +21,11 @@ public class DecaLongJump {
 
 			try {
 				// Acceptable values.
-				if (distance < 250) {
+				if (distance < minBoundaryValue) {
 					System.out.println("Value too low");
 					score = -1;
 					//distance = inputResult.enterResult();
-				} else if (distance > 1000) {
+				} else if (distance > maxBoundaryValue) {
 					System.out.println("Value too high");
 					score = -2;
 					//distance = inputResult.enterResult();
@@ -42,6 +42,12 @@ public class DecaLongJump {
 		}
 		System.out.println("The result is: " + score);
 		return score;
+	}
+	public double getMinBoundaryValue() {
+		return minBoundaryValue;
+	}
+	public double getMaxBoundaryValue() {
+		return maxBoundaryValue;
 	}
 
 }
