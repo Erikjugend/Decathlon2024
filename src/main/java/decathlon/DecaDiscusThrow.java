@@ -9,6 +9,9 @@ public class DecaDiscusThrow {
 	private double A = 12.91;
 	private double B = 4;
 	private double C = 1.1;
+
+	private double minBoundaryValue = 0;
+	private double maxBoundaryValue = 85;
 	boolean active = true;
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();

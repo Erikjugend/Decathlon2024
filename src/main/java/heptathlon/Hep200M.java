@@ -8,6 +8,8 @@ public class Hep200M {
 	private double A = 4.99087;
 	private double B = 42.5;
 	private double C = 1.81;
+	private double minBoundaryValue = 20;
+	private double maxBoundaryValue = 100;
 	boolean active = true;
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();

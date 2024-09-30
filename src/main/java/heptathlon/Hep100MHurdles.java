@@ -9,6 +9,8 @@ public class Hep100MHurdles {
 	private double A = 9.23076;
 	private double B = 26.7;
 	private double C = 1.835;
+	private double minBoundaryValue = 10;
+	private double maxBoundaryValue = 30;
 	boolean active = true;
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();

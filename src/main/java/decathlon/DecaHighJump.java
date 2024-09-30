@@ -9,6 +9,8 @@ public class DecaHighJump {
 	private double A = 0.8465;
 	private double B = 75;
 	private double C = 1.42;
+	private double minBoundaryValue = 0;
+	private double maxBoundaryValue = 300;
 	boolean active = true;
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();

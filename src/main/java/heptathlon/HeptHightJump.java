@@ -9,6 +9,8 @@ public class HeptHightJump {
 	private double A = 1.84523;
 	private double B = 75;
 	private double C = 1.348;
+	private double minBoundaryValue = 0;
+	private double maxBoundaryValue = 300;
 	boolean active = true;
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();
