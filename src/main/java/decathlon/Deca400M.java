@@ -21,7 +21,7 @@ public class Deca400M {
 		while (active) {
 
 			try {
-				if (runningTime > minBoundaryValue) {
+				if (runningTime < minBoundaryValue) {
 					score = -1;
 					//runningTime = inputResult.enterResult();
 				} else if (runningTime > maxBoundaryValue) {

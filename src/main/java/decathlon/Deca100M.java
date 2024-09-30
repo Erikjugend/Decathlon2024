@@ -23,7 +23,7 @@ public class Deca100M {
 
 			try {
 				// Acceptable values.
-				if (runningTime > minBoundaryValue) {
+				if (runningTime < minBoundaryValue) {
 					score = -1;
 					System.out.println("Value too low");
 					//runningTime = inputResult.enterResult(); //remove later

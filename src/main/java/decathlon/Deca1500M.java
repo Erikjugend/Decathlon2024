@@ -22,7 +22,7 @@ public class Deca1500M {
 
 			try {
 				// Acceptable values.
-				if (runningTime > minBoundaryValue) { //These are boundary values in minutes
+				if (runningTime < minBoundaryValue) { //These are boundary values in minutes
 					score = -1;
 					//runningTime = inputResult.enterResult();
 				} else if (runningTime > maxBoundaryValue) { //These are boundary values in minutes

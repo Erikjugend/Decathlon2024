@@ -20,7 +20,7 @@ public class Deca110MHurdles {
 		while (active) {
 
 			try {
-				if (runningTime > minBoundaryValue) {
+				if (runningTime < minBoundaryValue) {
 					score = -1;
 					//runningTime = inputResult.enterResult();
 				} else if (runningTime > maxBoundaryValue) {

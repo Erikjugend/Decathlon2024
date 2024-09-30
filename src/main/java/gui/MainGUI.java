@@ -28,6 +28,8 @@ public class MainGUI {
     private JRadioButton radioButtonDeca;
     private JRadioButton radioButtonHepta;
     private String eventToCalculate = "Decathlon";
+    private String minValue = "";
+    private String maxValue = "";
 
     private ArrayList<Competitor> competitors = new ArrayList<>();
     String[] disciplines = {
@@ -76,7 +78,10 @@ public class MainGUI {
 
         // Input for result
         resultField = new JTextField(10);
-        resultLabel = new JLabel("Enter Result:");
+        Deca100M deca100M = new Deca100M();
+        minValue = String.valueOf(deca100M.getMinBoundaryValue());
+        maxValue = String.valueOf(deca100M.getMaxBoundaryValue());
+        resultLabel = new JLabel("Enter Result (" + minValue + "-" + maxValue + " s):");
         panel.add(resultLabel);
         panel.add(resultField);
 
@@ -160,10 +165,118 @@ public class MainGUI {
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                if(disciplineBox.getSelectedItem() == "1500m")
-                    resultLabel.setText("Enter Result: (Minutes e.g. 4.1)");
-                else {
-                    if (!resultLabel.getText().equals("Enter Result:")) resultLabel.setText("Enter Result:");
+                String discipline = (String) disciplineBox.getSelectedItem();
+                if (eventToCalculate.equals("Decathlon"))
+                {
+                    switch (discipline) {
+                        case "100m":
+                            Deca100M deca100M = new Deca100M();
+                            minValue = String.valueOf(deca100M.getMinBoundaryValue());
+                            maxValue = String.valueOf(deca100M.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " s):");
+                            break;
+                        case "400m":
+                            Deca400M deca400M = new Deca400M();
+                            minValue = String.valueOf(deca400M.getMinBoundaryValue());
+                            maxValue = String.valueOf(deca400M.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " s):");
+                            break;
+                        case "1500m":
+                            Deca1500M deca1500M = new Deca1500M();
+                            minValue = String.valueOf(deca1500M.getMinBoundaryValue());
+                            maxValue = String.valueOf(deca1500M.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " s):");
+                            break;
+                        case "110m Hurdles":
+                            Deca110MHurdles deca110MHurdles = new Deca110MHurdles();
+                            minValue = String.valueOf(deca110MHurdles.getMinBoundaryValue());
+                            maxValue = String.valueOf(deca110MHurdles.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " s):");
+                            break;
+                        case "Long Jump":
+                            DecaLongJump decaLongJump = new DecaLongJump();
+                            minValue = String.valueOf(decaLongJump.getMinBoundaryValue());
+                            maxValue = String.valueOf(decaLongJump.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " cm):");
+                            break;
+                        case "High Jump":
+                            DecaHighJump decaHighJump = new DecaHighJump();
+                            minValue = String.valueOf(decaHighJump.getMinBoundaryValue());
+                            maxValue = String.valueOf(decaHighJump.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " cm):");
+                            break;
+                        case "Pole Vault":
+                            DecaPoleVault decaPoleVault = new DecaPoleVault();
+                            minValue = String.valueOf(decaPoleVault.getMinBoundaryValue());
+                            maxValue = String.valueOf(decaPoleVault.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " cm):");
+                            break;
+                        case "Discus Throw":
+                            DecaDiscusThrow decaDiscusThrow = new DecaDiscusThrow();
+                            minValue = String.valueOf(decaDiscusThrow.getMinBoundaryValue());
+                            maxValue = String.valueOf(decaDiscusThrow.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " m):");
+                            break;
+                        case "Javelin Throw":
+                            DecaJavelinThrow decaJavelinThrow = new DecaJavelinThrow();
+                            minValue = String.valueOf(decaJavelinThrow.getMinBoundaryValue());
+                            maxValue = String.valueOf(decaJavelinThrow.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " m):");
+                            break;
+                        case "Shot Put":
+                            DecaShotPut decaShotPut = new DecaShotPut();
+                            minValue = String.valueOf(decaShotPut.getMinBoundaryValue());
+                            maxValue = String.valueOf(decaShotPut.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " m):");
+                            break;
+                    }
+                }
+                else if (eventToCalculate.equals("Heptathlon")) {
+                    switch (discipline)
+                    {
+                        case "100m Hurdles":
+                            Hep100MHurdles hep100MHurdles = new Hep100MHurdles();
+                            minValue = String.valueOf(hep100MHurdles.getMinBoundaryValue());
+                            maxValue = String.valueOf(hep100MHurdles.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " s):");
+                            break;
+                        case "200m":
+                            Hep200M hep200M = new Hep200M();
+                            minValue = String.valueOf(hep200M.getMinBoundaryValue());
+                            maxValue = String.valueOf(hep200M.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " s):");
+                            break;
+                        case "800m":
+                            Hep800M hep800M = new Hep800M();
+                            minValue = String.valueOf(hep800M.getMinBoundaryValue());
+                            maxValue = String.valueOf(hep800M.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " s):");
+                            break;
+                        case "High Jump":
+                            HeptHightJump heptHightJump = new HeptHightJump();
+                            minValue = String.valueOf(heptHightJump.getMinBoundaryValue());
+                            maxValue = String.valueOf(heptHightJump.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " cm):");
+                            break;
+                        case "Javelin Throw":
+                            HeptJavelinThrow heptJavelinThrow = new HeptJavelinThrow();
+                            minValue = String.valueOf(heptJavelinThrow.getMinBoundaryValue());
+                            maxValue = String.valueOf(heptJavelinThrow.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " m):");
+                            break;
+                        case "Long Jump":
+                            HeptLongJump heptLongJump = new HeptLongJump();
+                            minValue = String.valueOf(heptLongJump.getMinBoundaryValue());
+                            maxValue = String.valueOf(heptLongJump.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " cm):");
+                            break;
+                        case "Shot Put":
+                            HeptShotPut heptShotPut = new HeptShotPut();
+                            minValue = String.valueOf(heptShotPut.getMinBoundaryValue());
+                            maxValue = String.valueOf(heptShotPut.getMaxBoundaryValue());
+                            resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " m):");
+                            break;
+                    }
                 }
             }
         });
@@ -178,11 +291,21 @@ public class MainGUI {
                     disciplines = new String[] {"100m", "400m", "1500m", "110m Hurdles", "Long Jump", "High Jump", "Pole Vault", "Discus Throw", "Javelin Throw", "Shot Put"};
                     disciplineBox.setModel(new DefaultComboBoxModel<>(disciplines));
                     eventToCalculate = "Decathlon";
+
+                    Deca100M deca100M = new Deca100M();
+                    minValue = String.valueOf(deca100M.getMinBoundaryValue());
+                    maxValue = String.valueOf(deca100M.getMaxBoundaryValue());
+                    resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " s):");
                     break;
                 case "Heptathlon":
                     disciplines = new String[] {"100m Hurdles", "200m", "800m", "High Jump", "Javelin Throw", "Long Jump", "Shot Put"};
                     disciplineBox.setModel(new DefaultComboBoxModel<>(disciplines));
                     eventToCalculate = "Heptathlon";
+
+                    Hep100MHurdles hep100MHurdles = new Hep100MHurdles();
+                    minValue = String.valueOf(hep100MHurdles.getMinBoundaryValue());
+                    maxValue = String.valueOf(hep100MHurdles.getMaxBoundaryValue());
+                    resultLabel.setText("Enter Result (" + minValue + "-" + maxValue + " s):");
                     break;
             }
         }
@@ -301,6 +424,7 @@ public class MainGUI {
         }
     }
 
+
     private class ExportButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -332,3 +456,4 @@ public class MainGUI {
 
 
 }
+
