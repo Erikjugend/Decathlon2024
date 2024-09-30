@@ -26,12 +26,16 @@ public class Deca1500M {
 					System.out.println("Value too low");
 					runningTime = inputResult.enterResult();
 				} else if (runningTime > maxBoundaryValue) { //These are boundary values in minutes
+					score = -1;
+					//runningTime = inputResult.enterResult();
+				} else if (runningTime > 7) { //These are boundary values in minutes
 					System.out.println("Value too high");
-					runningTime = inputResult.enterResult();
+					score = -2;
+					//runningTime = inputResult.enterResult();
 				} else {
 					score = calc.calculateTrack(A, B, C, runningTime);
-					active = false;
 				}
+				active = false;
 			} catch (Exception e) {
 
 				System.out.println("Please enter numbers");

@@ -24,15 +24,17 @@ public class DecaHighJump {
 				// Acceptable values.
 				if (distance < 0) {
 					System.out.println("Value too low");
-					distance = inputResult.enterResult();
+					score = -1;
+					//distance = inputResult.enterResult();
 				} else if (distance > 100) {
 					System.out.println("Value too high");
-					distance = inputResult.enterResult();
+					score = -2;
+					//distance = inputResult.enterResult();
 				} else {
 
 					score = calc.calculateField(A, B, C, distance);
-					active = false;
 				}
+				active = false;
 			} catch (Exception e) {
 
 				System.out.println("Please enter numbers");

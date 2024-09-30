@@ -27,13 +27,17 @@ public class Deca100M {
 					System.out.println("Value too low");
 					runningTime = inputResult.enterResult(); //remove later
 				} else if (runningTime > maxBoundaryValue) {
+					score = -1;
+					//runningTime = inputResult.enterResult(); //remove later
+				} else if (runningTime > 17.8) {
 					System.out.println("Value too high");
-					runningTime = inputResult.enterResult();
+					//runningTime = inputResult.enterResult();
+					score = -2;
 				} else {
 
 					score = calc.calculateTrack(A, B, C, runningTime);
-					active = false;
 				}
+				active = false;
 			} catch (Exception e) {
 
 				System.out.println("Please enter numbers");
