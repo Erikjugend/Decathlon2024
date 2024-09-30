@@ -21,15 +21,17 @@ public class Hep800M {
 				// Acceptable values.
 				if (runningTime < 70) {
 					System.out.println("Value too low");
-					runningTime = inputResult.enterResult();
+					score = -1;
+					//runningTime = inputResult.enterResult();
 				} else if (runningTime > 250.79) {
 					// competitor gets 1 point in 250.79 sec
 					System.out.println("Value too high");
-					runningTime = inputResult.enterResult();
+					score = -2;
+					//runningTime = inputResult.enterResult();
 				} else {
 					score = calc.calculateTrack(A, B, C, runningTime);
-					active = false;
 				}
+				active = false;
 			} catch (Exception e) {
 
 				System.out.println("Please enter numbers");

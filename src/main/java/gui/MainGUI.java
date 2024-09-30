@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.*;
 
 import decathlon.*;
+import excel.ExcelPrinter;
+import excel.ExcelReader;
 import heptathlon.*;
 
 
@@ -87,6 +89,62 @@ public class MainGUI {
 
         frame.add(panel);
         frame.setVisible(true);
+
+        // Button to save to Excel
+        JButton saveToExcelButton = new JButton("Save to Excel");
+        panel.add(saveToExcelButton);
+        saveToExcelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // Split the text area content into lines
+                    String[] lines = outputArea.getText().split("\n");
+                    Object[][] data = new Object[lines.length][1];  // Assuming single column for simplicity
+
+                    // Fill data with lines
+                    for (int i = 0; i < lines.length; i++) {
+                        data[i][0] = lines[i];
+                    }
+
+                    ExcelPrinter printer = new ExcelPrinter("competition_results");
+                    printer.add(data, "Results");
+                    printer.write();
+                    JOptionPane.showMessageDialog(null, "Results saved to Excel!");
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Error writing to Excel file.");
+                }
+            }
+        });
+        panel.add(saveToExcelButton);
+
+
+        // Button to load from Excel
+        JButton loadFromExcelButton = new JButton("Load from Excel");
+        panel.add(loadFromExcelButton);
+        loadFromExcelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    ExcelReader reader = new ExcelReader();
+                    StringBuilder loadedData = new StringBuilder();
+
+                    // Read the first 10 rows and 1 column (adjust as needed)
+                    for (int i = 0; i < 10; i++) {
+                        String data = reader.getCellInfo("competition_results", 0, i, 0);
+                        loadedData.append(data).append("\n");
+                    }
+
+                    outputArea.setText(loadedData.toString());
+                    JOptionPane.showMessageDialog(null, "Results loaded from Excel!");
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Error reading from Excel file.");
+                }
+            }
+        });
+        panel.add(loadFromExcelButton);
+
 
         disciplineBox.addActionListener(new ActionListener()
         {
@@ -212,15 +270,23 @@ public class MainGUI {
                     }
                 }
 
-                outputArea.append("Competitor: " + name + "\n");
-                outputArea.append("Discipline: " + discipline + "\n");
-                outputArea.append("Result: " + result + "\n");
-                outputArea.append("Score: " + score + "\n\n");
-            } catch (NumberFormatException ex) {
+                if (score == -1) {
+                    JOptionPane.showMessageDialog(null, "Value too low", "Invalid entry", JOptionPane.ERROR_MESSAGE);
+                }
+                else if (score == -2) {
+                    JOptionPane.showMessageDialog(null, "Value too high", "Invalid entry", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
+                    outputArea.append("Competitor: " + name + "\n");
+                    outputArea.append("Discipline: " + discipline + "\n");
+                    outputArea.append("Result: " + result + "\n");
+                    outputArea.append("Score: " + score + "\n\n");
+                }
+            }
+            catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null, "Please enter a valid number for the result.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 System.out.println("ERROR");
             }
         }
