@@ -8,6 +8,10 @@ public class Deca100M {
 	private double A = 25.4347;
 	private double B = 18;
 	private double C = 1.81;
+
+	private double minBoundaryValue = 5;
+	private double maxBoundaryValue = 20;
+
 	boolean active = true;
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();
@@ -19,10 +23,10 @@ public class Deca100M {
 
 			try {
 				// Acceptable values.
-				if (runningTime < 5) {
+				if (runningTime < minBoundaryValue) {
 					System.out.println("Value too low");
 					runningTime = inputResult.enterResult(); //remove later
-				} else if (runningTime > 17.8) {
+				} else if (runningTime > maxBoundaryValue) {
 					System.out.println("Value too high");
 					runningTime = inputResult.enterResult();
 				} else {
@@ -39,6 +43,12 @@ public class Deca100M {
 
 		return score;
 
+	}
+	public double getMinBoundaryValue() {
+		return minBoundaryValue;
+	}
+	public double getMaxBoundaryValue() {
+		return maxBoundaryValue;
 	}
 
 }

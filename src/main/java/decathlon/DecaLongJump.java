@@ -8,6 +8,8 @@ public class DecaLongJump {
 	private double A = 0.14354;
 	private double B = 220;
 	private double C = 1.4;
+	private double minBoundaryValue = 0;
+	private double maxBoundaryValue = 1000;
 	boolean active = true;
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();

@@ -8,6 +8,8 @@ public class DecaPoleVault {
 	private double A = 0.2797;
 	private double B = 100;
 	private double C = 1.35;
+	private double minBoundaryValue = 0;
+	private double maxBoundaryValue = 1000;
 	boolean active = true;
 
 	CalcTrackAndField calc = new CalcTrackAndField();

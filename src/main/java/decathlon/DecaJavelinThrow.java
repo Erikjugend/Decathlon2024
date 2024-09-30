@@ -9,6 +9,8 @@ public class DecaJavelinThrow {
 	private double A = 10.14;
 	private double B = 7;
 	private double C = 1.08;
+	private double minBoundaryValue = 0;
+	private double maxBoundaryValue = 110;
 	boolean active = true;
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();

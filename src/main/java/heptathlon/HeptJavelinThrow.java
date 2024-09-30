@@ -9,6 +9,8 @@ public class HeptJavelinThrow {
 	private double A = 15.9803;
 	private double B = 3.8;
 	private double C = 1.04;
+	private double minBoundaryValue = 0;
+	private double maxBoundaryValue = 110;
 	boolean active = true;
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();

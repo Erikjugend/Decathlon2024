@@ -8,6 +8,8 @@ public class Deca110MHurdles {
 	private double A = 5.74352;
 	private double B = 28.5;
 	private double C = 1.92;
+	private double minBoundaryValue = 10;
+	private double maxBoundaryValue = 30;
 	boolean active = true;
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();
@@ -19,10 +21,10 @@ public class Deca110MHurdles {
 
 			try {
 				// Acceptable values.
-				if (runningTime < 10) {
+				if (runningTime < minBoundaryValue) {
 					System.out.println("Value too low");
 					runningTime = inputResult.enterResult();
-				} else if (runningTime > 28.5) {
+				} else if (runningTime > maxBoundaryValue) {
 					System.out.println("Value too high");
 					runningTime = inputResult.enterResult();
 				} else {

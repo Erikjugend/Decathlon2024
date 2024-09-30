@@ -9,6 +9,8 @@ public class HeptShotPut {
 	private double A = 56.0211;
 	private double B = 1.5;
 	private double C = 1.05;
+	private double minBoundaryValue = 0;
+	private double maxBoundaryValue = 30;
 	boolean active = true;
 	CalcTrackAndField calc = new CalcTrackAndField();
 	InputResult inputResult = new InputResult();
