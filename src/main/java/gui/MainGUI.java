@@ -286,6 +286,19 @@ public class MainGUI {
                     JOptionPane.showMessageDialog(null, "Value too high", "Invalid entry", JOptionPane.ERROR_MESSAGE);
                 }
                 else {
+                    Competitor competitor = findCompetitorByName(name);
+                    if (competitor == null) {
+                        competitor = new Competitor(name);  // Create a new competitor
+                        competitors.add(competitor);        // Add to the list
+                    }
+
+                    // Update the competitor's score for the selected discipline
+                    competitor.setScore(discipline, score);
+
+                    // Print the number of competitors for debugging
+                    System.out.println("Number of competitors: " + competitors.size());
+
+
                     outputArea.append("Competitor: " + name + "\n");
                     outputArea.append("Discipline: " + discipline + "\n");
                     outputArea.append("Result: " + result + "\n");
@@ -317,10 +330,14 @@ public class MainGUI {
         String[][] data = new String[competitors.size()][];
         int i = 0;
         for (Competitor competitor : competitors) {
-            data[i] = new String[18];  // Adjust this for 17 events + name + total
-            Object[] rowData = competitor.getRowData();
+            Object[] rowData = competitor.getRowData(); // Get the competitor's row data
+
+            // Ensure the array size matches the number of columns in rowData
+            data[i] = new String[rowData.length];
+
+            // Safely copy rowData to data array
             for (int j = 0; j < rowData.length; j++) {
-                data[i][j] = rowData[j].toString();
+                data[i][j] = (rowData[j] != null) ? rowData[j].toString() : "";  // Handle null values
             }
             i++;
         }
@@ -330,5 +347,14 @@ public class MainGUI {
         printer.write();
     }
 
+    // Method to find an existing competitor by name
+    private Competitor findCompetitorByName(String name) {
+        for (Competitor competitor : competitors) {
+            if (competitor.getName().equalsIgnoreCase(name)) {
+                return competitor;
+            }
+        }
+        return null;  // If not found, return null
+    }
 
 }
