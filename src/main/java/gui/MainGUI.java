@@ -30,6 +30,7 @@ public class MainGUI {
     private String eventToCalculate = "Decathlon";
     private String minValue = "";
     private String maxValue = "";
+    private int numberOfCompetitors = 0;
 
     private ArrayList<Competitor> competitors = new ArrayList<>();
     String[] disciplines = {
@@ -408,6 +409,12 @@ public class MainGUI {
                 else if (score == -2) {
                     JOptionPane.showMessageDialog(null, "Value too high", "Invalid entry", JOptionPane.ERROR_MESSAGE);
                 }
+                else if(numberOfCompetitors > 40) {
+                    JOptionPane.showMessageDialog(null, "The number of competitors cannot exceed 40", "Too many competitors", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(nameField.getText() == null || nameField.getText().isEmpty() || !nameField.getText().matches("[a-zA-Z]+")) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid name for competitor, letters only", "Invalid name", JOptionPane.ERROR_MESSAGE);
+                }
                 else {
                     Competitor competitor = findCompetitorByName(name);
                     if (competitor == null) {
@@ -426,6 +433,7 @@ public class MainGUI {
                     outputArea.append("Discipline: " + discipline + "\n");
                     outputArea.append("Result: " + result + "\n");
                     outputArea.append("Score: " + score + "\n\n");
+                    numberOfCompetitors++;
                 }
             }
             catch (NumberFormatException ex) {
