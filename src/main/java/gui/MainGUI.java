@@ -90,47 +90,47 @@ public class MainGUI {
         calculateButton.addActionListener(new CalculateButtonListener());
         panel.add(calculateButton);
 
-        // Added: Button to export results to Excel
-        JButton exportButton = new JButton("Export to Excel");
-        exportButton.addActionListener(new ExportButtonListener());  // New export button listener
-        panel.add(exportButton);  // Add export button to the panel
-
         // Output area
         outputArea = new JTextArea(5, 40);
         outputArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(outputArea);
         panel.add(scrollPane);
 
+        // Added: Button to export results to Excel
+        JButton exportButton = new JButton("Export to Excel");
+        exportButton.addActionListener(new ExportButtonListener());  // New export button listener
+        panel.add(exportButton);  // Add export button to the panel
+
         frame.add(panel);
         frame.setVisible(true);
 
         // Button to save to Excel
-        JButton saveToExcelButton = new JButton("Save to Excel");
-        panel.add(saveToExcelButton);
-        saveToExcelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    // Split the text area content into lines
-                    String[] lines = outputArea.getText().split("\n");
-                    Object[][] data = new Object[lines.length][1];  // Assuming single column for simplicity
-
-                    // Fill data with lines
-                    for (int i = 0; i < lines.length; i++) {
-                        data[i][0] = lines[i];
-                    }
-
-                    ExcelPrinter printer = new ExcelPrinter("competition_results");
-                    printer.add(data, "Results");
-                    printer.write();
-                    JOptionPane.showMessageDialog(null, "Results saved to Excel!");
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Error writing to Excel file.");
-                }
-            }
-        });
-        panel.add(saveToExcelButton);
+//        JButton saveToExcelButton = new JButton("Save to Excel");
+//        panel.add(saveToExcelButton);
+//        saveToExcelButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                try {
+//                    // Split the text area content into lines
+//                    String[] lines = outputArea.getText().split("\n");
+//                    Object[][] data = new Object[lines.length][1];  // Assuming single column for simplicity
+//
+//                    // Fill data with lines
+//                    for (int i = 0; i < lines.length; i++) {
+//                        data[i][0] = lines[i];
+//                    }
+//
+//                    ExcelPrinter printer = new ExcelPrinter("competition_results");
+//                    printer.add(data, "Results");
+//                    printer.write();
+//                    JOptionPane.showMessageDialog(null, "Results saved to Excel!");
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                    JOptionPane.showMessageDialog(null, "Error writing to Excel file.");
+//                }
+//            }
+//        });
+//        panel.add(saveToExcelButton);
 
 
         // Button to load from Excel
