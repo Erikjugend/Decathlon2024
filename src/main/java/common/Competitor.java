@@ -15,34 +15,34 @@ public class Competitor {
     public void setScore(String discipline, int score) {
         switch (discipline) {
             // Decathlon Events
-            case "100m (Decathlon)":
+            case "100m":
                 scores[0] = score;
                 break;
-            case "400m (Decathlon)":
+            case "400m":
                 scores[1] = score;
                 break;
-            case "1500m (Decathlon)":
+            case "1500m":
                 scores[2] = score;
                 break;
-            case "110m Hurdles (Decathlon)":
+            case "110m Hurdles":
                 scores[3] = score;
                 break;
-            case "Long Jump (Decathlon)":
+            case "Long Jump":
                 scores[4] = score;
                 break;
-            case "High Jump (Decathlon)":
+            case "High Jump":
                 scores[5] = score;
                 break;
-            case "Pole Vault (Decathlon)":
+            case "Pole Vault":
                 scores[6] = score;
                 break;
-            case "Discus Throw (Decathlon)":
+            case "Discus Throw":
                 scores[7] = score;
                 break;
-            case "Javelin Throw (Decathlon)":
+            case "Javelin Throw":
                 scores[8] = score;
                 break;
-            case "Shot Put (Decathlon)":
+            case "Shot Put":
                 scores[9] = score;
                 break;
 
@@ -77,12 +77,18 @@ public class Competitor {
             totalScore += score;
         }
 
-        Object[] rowData = new Object[scores.length + 2];
-        rowData[0] = name;
-        System.arraycopy(scores, 0, rowData, 1, scores.length);
-        rowData[17] = totalScore;  // Total score in the last column
+        Object[] rowData = new Object[scores.length + 2];  // Object array
+        rowData[0] = name;  // Name is fine
+
+        // Convert int[] scores to Integer[] and then copy to Object[]
+        for (int i = 0; i < scores.length; i++) {
+            rowData[i + 1] = scores[i];  // Converting int to Integer (auto-boxing)
+        }
+
+        rowData[scores.length + 1] = totalScore;  // Total score in the last column
 
         return rowData;
     }
+
 }
 
