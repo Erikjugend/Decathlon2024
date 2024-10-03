@@ -451,8 +451,13 @@ public class MainGUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                exportToExcel();
-                JOptionPane.showMessageDialog(null, "Results exported successfully!", "Export Successful", JOptionPane.INFORMATION_MESSAGE);
+                if(competitors.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Nothing to save, please add competitor results", "No competitors", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
+                    exportToExcel();
+                    JOptionPane.showMessageDialog(null, "Results exported successfully!", "Export Successful", JOptionPane.INFORMATION_MESSAGE);
+                }
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(null, "Failed to export results to Excel.", "Export Error", JOptionPane.ERROR_MESSAGE);
             }

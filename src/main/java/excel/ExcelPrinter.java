@@ -1,5 +1,6 @@
 package excel;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -42,16 +43,24 @@ public class ExcelPrinter {
 					
 				} else if (field instanceof Double) {
 					cell.setCellValue((Double) field);
-					
+
 				}
 			}
 		}
 	}
 
 	public void write() throws IOException {
-		FileOutputStream out = new FileOutputStream("C:/Eclipse/resultat_" + excelName + ".xlsx");
+		// Create the folder if it doesn't exist
+		File directory = new File("C:/Eclipse");
+		if (!directory.exists()) {
+			directory.mkdirs();  // Create the directory
+		}
+
+		// Write the Excel file in the specified location
+		FileOutputStream out = new FileOutputStream(directory + "/resultat_" + excelName + ".xlsx");
 		workbook.write(out);
 		workbook.close();
+		out.close();  // Close the output stream after writing
 	}
 
 }
