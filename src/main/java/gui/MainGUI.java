@@ -409,7 +409,7 @@ public class MainGUI {
                 else if (score == -2) {
                     JOptionPane.showMessageDialog(null, "Value too high", "Invalid entry", JOptionPane.ERROR_MESSAGE);
                 }
-                else if(numberOfCompetitors > 40) {
+                else if(numberOfCompetitors >= 40) {
                     JOptionPane.showMessageDialog(null, "The number of competitors cannot exceed 40", "Too many competitors", JOptionPane.ERROR_MESSAGE);
                 }
                 else if(nameField.getText() == null || nameField.getText().isEmpty() || !nameField.getText().matches("[a-zA-Z]+")) {
@@ -434,6 +434,7 @@ public class MainGUI {
                     outputArea.append("Result: " + result + "\n");
                     outputArea.append("Score: " + score + "\n\n");
                     numberOfCompetitors++;
+                    System.out.println(numberOfCompetitors);
                 }
             }
             catch (NumberFormatException ex) {
