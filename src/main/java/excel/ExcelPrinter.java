@@ -1,5 +1,6 @@
 package excel;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -56,11 +57,20 @@ public class ExcelPrinter {
 			directory.mkdirs();  // Create the directory
 		}
 
-		// Write the Excel file in the specified location
-		FileOutputStream out = new FileOutputStream(directory + "/resultat_" + excelName + ".xlsx");
+		File excelFile = new File(directory + "/resultat_" + excelName + ".xlsx");
+		FileOutputStream out = new FileOutputStream(excelFile);
+
 		workbook.write(out);
 		workbook.close();
 		out.close();  // Close the output stream after writing
+
+		// Open the Excel file using the system default application
+		if (Desktop.isDesktopSupported()) {
+			Desktop desktop = Desktop.getDesktop();
+			if (excelFile.exists()) {
+				desktop.open(excelFile);  // Open the file
+			}
+		}
 	}
 
 }
