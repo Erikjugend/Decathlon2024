@@ -135,30 +135,30 @@ public class MainGUI {
 
 
         // Button to load from Excel
-        JButton loadFromExcelButton = new JButton("Load from Excel");
-        panel.add(loadFromExcelButton);
-        loadFromExcelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    ExcelReader reader = new ExcelReader();
-                    StringBuilder loadedData = new StringBuilder();
-
-                    // Read the first 10 rows and 1 column (adjust as needed)
-                    for (int i = 0; i < 10; i++) {
-                        String data = reader.getCellInfo("competition_results", 0, i, 0);
-                        loadedData.append(data).append("\n");
-                    }
-
-                    outputArea.setText(loadedData.toString());
-                    JOptionPane.showMessageDialog(null, "Results loaded from Excel!");
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Error reading from Excel file.");
-                }
-            }
-        });
-        panel.add(loadFromExcelButton);
+//        JButton loadFromExcelButton = new JButton("Load from Excel");
+//        panel.add(loadFromExcelButton);
+//        loadFromExcelButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                try {
+//                    ExcelReader reader = new ExcelReader();
+//                    StringBuilder loadedData = new StringBuilder();
+//
+//                    // Read the first 10 rows and 1 column (adjust as needed)
+//                    for (int i = 0; i < 10; i++) {
+//                        String data = reader.getCellInfo("competition_results", 0, i, 0);
+//                        loadedData.append(data).append("\n");
+//                    }
+//
+//                    outputArea.setText(loadedData.toString());
+//                    JOptionPane.showMessageDialog(null, "Results loaded from Excel!");
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                    JOptionPane.showMessageDialog(null, "Error reading from Excel file.");
+//                }
+//            }
+//        });
+//        panel.add(loadFromExcelButton);
 
 
         disciplineBox.addActionListener(new ActionListener()
